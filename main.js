@@ -10,10 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cargar el carrito desde el localStorage si existe
     const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-        cart = JSON.parse(savedCart);
-        updateCartUI();
-    }
+    let cart = savedCart ? JSON.parse(savedCart) : [];
+    updateCartUI(cart);
+    
+    // Asignar el carrito a la variable global para que sea accesible desde otras funciones
+    window.cart = cart;
 });
 
 function displayProducts(products) {
@@ -43,10 +44,10 @@ function addToCart(productId) {
     const product = getProductById(productId);
 
     if (product) {
-        cart.push(product);
-        updateCartUI();
+        window.cart.push(product);
+        updateCartUI(window.cart);
         // Guardar el carrito en el localStorage
-        saveCartToLocalStorage();
+        saveCartToLocalStorage(window.cart);
     } else {
         console.error('Producto no encontrado');
     }
@@ -57,7 +58,7 @@ function getProductById(productId) {
     return window.productsData.find(product => product.id === productId);
 }
 
-function updateCartUI() {
+function updateCartUI(cart) {
     const cartList = document.getElementById('cart-list');
     const totalSpan = document.getElementById('total');
     
@@ -76,24 +77,45 @@ function updateCartUI() {
 }
 
 function checkout() {
-    console.log('Realizando proceso de compra...');
+    const totalAmount = parseFloat(document.getElementById('total').textContent);
 
-    // Realizar aquí la lógica de procesamiento de compra si es necesario
-    alert('¡Gracias por tu compra! Monto total: $' + document.getElementById('total').textContent);
+    if (totalAmount > 0) {
+        // Mostrar modal de Bootstrap con el mensaje de compra exitosa
+        const modalContent = `
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">¡Compra Exitosa!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¡Gracias por tu compra! Monto total: $${totalAmount.toFixed(2)}</p>
+                    </div>
+                </div>
+            </div>
+        `;
 
-    // Limpia el carrito después de la compra
-    clearCart();
-    console.log('Proceso de compra completado.');
+        const modal = new bootstrap.Modal(document.getElementById('checkoutModal'));
+        document.getElementById('modalContent').innerHTML = modalContent;
+        modal.show();
+
+        // Limpia el carrito después de la compra
+        clearCart();
+        console.log('Proceso de compra completado.');
+    } else {
+        alert('El carrito está vacío. Agrega productos antes de comprar.');
+        console.log('Intento de compra con carrito vacío.');
+    }
 }
 
 function clearCart() {
-    cart = [];
-    updateCartUI();
+    window.cart = [];
+    updateCartUI(window.cart);
     // Limpiar el carrito en el localStorage
     localStorage.removeItem('cart');
 }
 
-function saveCartToLocalStorage() {
+function saveCartToLocalStorage(cart) {
     // Guardar el carrito en el localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
 }
