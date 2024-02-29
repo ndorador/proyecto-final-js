@@ -20,25 +20,26 @@ document.addEventListener('DOMContentLoaded', () => {
 function displayProducts(products) {
     const productsContainer = document.getElementById('products');
 
-    // Agrupar los productos en filas de tres
-    for (let i = 0; i < products.length; i += 3) {
-        const row = document.createElement('div');
-        row.className = 'row';
+    for (let i = 0; i < products.length; i++) {
+        const product = products[i];
+        const productElement = document.createElement('div');
+        productElement.className = 'col'; // Utilizamos col para especificar el estilo de la columna
+        productElement.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" class="product-image">
+            <p>${product.name} - $${product.price}</p>
+            <button onclick="addToCart(${product.id})">Agregar al Carrito</button>
+        `;
+        productsContainer.appendChild(productElement);
 
-        for (let j = i; j < i + 3 && j < products.length; j++) {
-            const product = products[j];
-            const productElement = document.createElement('div');
-            productElement.className = 'col';
-            productElement.innerHTML = `
-                <p>${product.name} - $${product.price}</p>
-                <button onclick="addToCart(${product.id})">Agregar al Carrito</button>
-            `;
-            row.appendChild(productElement);
+        // Agregar un salto de línea después de cada 4 productos para crear nuevas filas
+        if ((i + 1) % 4 === 0) {
+            const lineBreak = document.createElement('br');
+            productsContainer.appendChild(lineBreak);
         }
-
-        productsContainer.appendChild(row);
     }
 }
+
+
 
 function addToCart(productId) {
     const product = getProductById(productId);
@@ -80,30 +81,32 @@ function checkout() {
     const totalAmount = parseFloat(document.getElementById('total').textContent);
 
     if (totalAmount > 0) {
-        // Mostrar modal de Bootstrap con el mensaje de compra exitosa
-        const modalContent = `
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">¡Compra Exitosa!</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>¡Gracias por tu compra! Monto total: $${totalAmount.toFixed(2)}</p>
-                    </div>
-                </div>
-            </div>
+        // Crear un div para el mensaje estilizado
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'success-message';
+        messageDiv.innerHTML = `
+            <p>¡Gracias por tu compra! Monto total: $${totalAmount.toFixed(2)}</p>
         `;
 
-        const modal = new bootstrap.Modal(document.getElementById('checkoutModal'));
-        document.getElementById('modalContent').innerHTML = modalContent;
-        modal.show();
+        // Añadir el div al cuerpo del documento
+        document.body.appendChild(messageDiv);
 
-        // Limpia el carrito después de la compra
-        clearCart();
-        console.log('Proceso de compra completado.');
+        // Limpia el carrito después de la compra después de un breve retraso
+        setTimeout(() => {
+            clearCart();
+            console.log('Proceso de compra completado.');
+            // Remover el mensaje después de limpiar el carrito
+            document.body.removeChild(messageDiv);
+        }, 3000);  // Mostrar el mensaje por 3 segundos
     } else {
-        alert('El carrito está vacío. Agrega productos antes de comprar.');
+        // Mostrar mensaje de carrito vacío
+        const emptyCartMessage = document.getElementById('emptyCartMessage');
+        emptyCartMessage.style.display = 'block';
+
+        // Ocultar el mensaje después de un breve retraso
+        setTimeout(() => {
+            emptyCartMessage.style.display = 'none';
+        }, 3000);  // Mostrar el mensaje por 3 segundos
         console.log('Intento de compra con carrito vacío.');
     }
 }

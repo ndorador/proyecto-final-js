@@ -2,10 +2,17 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Establece el cuerpo para ocupar el 100% del alto de la ventana */
+    
 }
 
 h1 {
     text-align: center;
+    margin-bottom: 60px; /* Ajusta el valor del margen según sea necesario */
 }
 
 .product-container {
@@ -16,11 +23,12 @@ h1 {
 }
 
 .col {
-    width: 30%;
+    width: 25%;
     background-color: #f9f9f9;
     padding: 10px;
     border: 1px solid #ddd;
     margin: 10px;
+    text-align: center;
 }
 
 .cart-container {
@@ -52,4 +60,51 @@ h1 {
 
 .total {
     font-weight: bold;
+}
+
+.success-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+#emptyCartMessage {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f44336;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 1000;
+}
+
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-image {
+    max-width: 100%; /* Ajusta el tamaño máximo de la imagen al ancho de su contenedor */
+    height: auto;
+    border-radius: 8px; /* Ajusta el radio de la esquina para esquinas redondeadas */
+}
+
+#products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* O utiliza 'space-between' según tus preferencias */
+}
+.col-md-3 {
+    margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
 }
