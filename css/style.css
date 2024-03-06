@@ -75,3 +75,8 @@ body {
 .remove-btn:hover {
     background-color: #d32f2f;
 }
+.navbar-brand-centered {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
