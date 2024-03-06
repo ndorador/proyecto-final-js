@@ -109,14 +109,21 @@ function removeFromCart(productId) {
 }
 
 function checkout() {
+    // Obtener datos del cliente
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const address = document.getElementById('address').value;
+
     const totalAmount = parseFloat(document.getElementById('total').textContent);
 
-    if (totalAmount > 0) {
+    if (totalAmount > 0 && name && phone && email && address) {
         // Crear un div para el mensaje estilizado
         const messageDiv = document.createElement('div');
         messageDiv.className = 'success-message';
         messageDiv.innerHTML = `
-            <p>¡Gracias por tu compra! Monto total: $${totalAmount.toFixed(2)}</p>
+            <p>¡Gracias por tu compra, ${name}! Monto total: $${totalAmount.toFixed(2)}</p>
+            <p>Los productos se enviarán a la siguiente dirección: ${address}</p>
         `;
 
         // Añadir el div al cuerpo del documento
@@ -128,19 +135,13 @@ function checkout() {
             console.log('Proceso de compra completado.');
             // Remover el mensaje después de limpiar el carrito
             document.body.removeChild(messageDiv);
-        }, 3000);  // Mostrar el mensaje por 3 segundos
+        }, 5000);  // Mostrar el mensaje por 5 segundos
     } else {
-        // Mostrar mensaje de carrito vacío
-        const emptyCartMessage = document.getElementById('emptyCartMessage');
-        emptyCartMessage.style.display = 'block';
-
-        // Ocultar el mensaje después de un breve retraso
-        setTimeout(() => {
-            emptyCartMessage.style.display = 'none';
-        }, 3000);  // Mostrar el mensaje por 3 segundos
-        console.log('Intento de compra con carrito vacío.');
+        // Mostrar mensaje de datos incompletos
+        console.error('Falta información del cliente o el carrito está vacío.');
     }
 }
+
 
 function clearCart() {
     window.cart = [];
