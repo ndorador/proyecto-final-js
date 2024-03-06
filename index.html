@@ -9,24 +9,31 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Verdulería</h1>
-    <div id="products" class="product-container"></div>
-    <div id="cart" class="cart-container">
-        <h2>Carrito</h2>
-        <ul id="cart-list" class="cart-list"></ul>
-        <p>Total: $<span id="total" class="total">0.00</span></p>
-        <button onclick="checkout()" class="checkout-btn">Comprar</button>
-        <button onclick="clearCart()" class="clear-cart-btn">Vaciar Carrito</button>
-    </div>
-
-    <div class="modal" tabindex="-1" id="checkoutModal">
-        <div class="modal-dialog">
-            <div class="modal-content" id="modalContent"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Verdulería</h1>
+                <div id="products" class="product-container"></div>
+            </div>
+            <div class="col-md-4">
+                <div id="cart" class="cart-container">
+                    <h2>Carrito</h2>
+                    <ul id="cart-list" class="cart-list"></ul>
+                    <p>Total: $<span id="total" class="total">0.00</span></p>
+                    <button onclick="checkout()" class="btn btn-success checkout-btn">Comprar</button>
+                    <button onclick="clearCart()" class="btn btn-danger clear-cart-btn">Vaciar Carrito</button>
+                </div>
+            </div>
         </div>
-    </div>
-    <div id="emptyCartMessage">El carrito está vacío. Agrega productos antes de comprar.</div>
-    <script src="main.js"></script>
 
-    
+        <div class="modal" tabindex="-1" id="checkoutModal">
+            <div class="modal-dialog">
+                <div class="modal-content" id="modalContent"></div>
+            </div>
+        </div>
+        <div id="emptyCartMessage">El carrito está vacío. Agrega productos antes de comprar.</div>
+    </div>
+    <script src="main.js"></script>
 </body>
+
 </html>

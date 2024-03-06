@@ -19,23 +19,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function displayProducts(products) {
     const productsContainer = document.getElementById('products');
+    let currentRow;
 
     for (let i = 0; i < products.length; i++) {
         const product = products[i];
-        const productElement = document.createElement('div');
-        productElement.className = 'col'; // Utilizamos col para especificar el estilo de la columna
-        productElement.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" class="product-image">
-            <p>${product.name} - $${product.price}</p>
-            <button onclick="addToCart(${product.id})">Agregar al Carrito</button>
-        `;
-        productsContainer.appendChild(productElement);
 
-        // Agregar un salto de línea después de cada 4 productos para crear nuevas filas
-        if ((i + 1) % 4 === 0) {
-            const lineBreak = document.createElement('br');
-            productsContainer.appendChild(lineBreak);
+        // Comienza una nueva fila después de cada 4 productos
+        if (i % 4 === 0) {
+            currentRow = document.createElement('div');
+            currentRow.className = 'row';
+            productsContainer.appendChild(currentRow);
         }
+
+        const productElement = document.createElement('div');
+        productElement.className = 'col-md-3';
+        productElement.innerHTML = `
+            <div class="card mb-3">
+                <img src="${product.image}" alt="${product.name}" class="card-img-top product-image">
+                <div class="card-body">
+                    <h5 class="card-title">${product.name}</h5>
+                    <p class="card-text">$${product.price}</p>
+                    <button onclick="addToCart(${product.id})" class="btn btn-primary">Agregar al Carrito</button>
+                </div>
+            </div>
+        `;
+
+        // Agrega la tarjeta al contenedor de la fila actual
+        currentRow.appendChild(productElement);
     }
 }
 
@@ -45,14 +55,23 @@ function addToCart(productId) {
     const product = getProductById(productId);
 
     if (product) {
-        window.cart.push(product);
-        updateCartUI(window.cart);
-        // Guardar el carrito en el localStorage
-        saveCartToLocalStorage(window.cart);
+        const quantity = prompt(`¿Cuántos "${product.name}" deseas agregar al carrito?`, 1);
+
+        if (quantity !== null && !isNaN(quantity) && quantity > 0) {
+            // Agrega el producto con la cantidad al carrito
+            const cartProduct = { ...product, quantity: parseInt(quantity, 10) };
+            window.cart.push(cartProduct);
+            updateCartUI(window.cart);
+            // Guarda el carrito en el localStorage
+            saveCartToLocalStorage(window.cart);
+        } else {
+            console.error('Cantidad inválida o cancelada.');
+        }
     } else {
         console.error('Producto no encontrado');
     }
 }
+
 
 function getProductById(productId) {
     // Implementación de la función para obtener el producto por ID desde la variable global
@@ -69,12 +88,24 @@ function updateCartUI(cart) {
 
     cart.forEach(product => {
         const listItem = document.createElement('li');
-        listItem.textContent = `${product.name} - $${product.price}`;
+        listItem.innerHTML = `
+            <span>${product.name}</span>
+            <span>Precio: $${product.price}</span>
+            <span>Cantidad: ${product.quantity}</span>
+            <button onclick="removeFromCart(${product.id})" class="remove-btn">Eliminar</button>
+        `;
         cartList.appendChild(listItem);
-        total += product.price;
+        total += product.price * product.quantity;
     });
 
     totalSpan.textContent = total.toFixed(2);
+}
+
+function removeFromCart(productId) {
+    window.cart = window.cart.filter(product => product.id !== productId);
+    updateCartUI(window.cart);
+    // Guarda el carrito actualizado en el localStorage
+    saveCartToLocalStorage(window.cart);
 }
 
 function checkout() {

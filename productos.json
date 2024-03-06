@@ -3,6 +3,17 @@
     {"id": 2, "name": "Plátanos", "price": 1.8},
     {"id": 3, "name": "Zanahorias", "price": 0.9},
     {"id": 4, "name": "Naranjas", "price": 1.9},
-    {"id": 5, "name": "Tomates", "price": 1.9},
-    {"id": 6, "name": "Tomates", "price": 1.9}
+    {"id": 5, "name": "Tomates", "price": 1.9, "image": "assets/img/tomates.jpg" },
+    {"id": 6, "name": "Lechuga", "price": 1.9},
+    {"id": 7, "name": "Champiñones", "price": 1.9},
+    {"id": 8, "name": "Cebolla", "price": 1.9},
+    {"id": 9, "name": "Ajo", "price": 1.9},
+    {"id": 10, "name": "Tomates", "price": 1.9},
+    {"id": 11, "name": "Naranjas", "price": 1.9},
+    {"id": 12, "name": "Tomates", "price": 1.9},
+    {"id": 13, "name": "Tomates", "price": 1.9},
+    {"id": 14, "name": "Tomates", "price": 1.9},
+    {"id": 15, "name": "Naranjas", "price": 1.9},
+    {"id": 16, "name": "Tomates", "price": 1.9},
+    {"id": 17, "name": "Tomates", "price": 1.9}
   ]
