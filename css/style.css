@@ -176,3 +176,11 @@ input {
 .btn-primary:hover {
     background-color: #83b807; /* Cambia el color al pasar el ratón */
 }
+.btn-secondary {
+    color: #fff;
+    background-color: #d67244; /* Color rojo - puedes cambiarlo según tu preferencia */
+    border-color: #388a09;
+}
+.btn-secondary:hover {
+    background-color: #a73c2e; /* Cambia el color al pasar el ratón */
+}

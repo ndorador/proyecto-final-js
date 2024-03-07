@@ -81,24 +81,35 @@ function getProductById(productId) {
 function updateCartUI(cart) {
     const cartList = document.getElementById('cart-list');
     const totalSpan = document.getElementById('total');
+    const emptyCartMessage = document.getElementById('emptyCartMessage');
     
     cartList.innerHTML = '';
     
     let total = 0;
 
-    cart.forEach(product => {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `
-            <span>${product.name}</span>
-            <span>Precio: $${product.price}</span>
-            <span>Cantidad: ${product.quantity}</span>
-            <button onclick="removeFromCart(${product.id})" class="remove-btn">Eliminar</button>
-        `;
-        cartList.appendChild(listItem);
-        total += product.price * product.quantity;
-    });
+    if (cart.length > 0) {
+        emptyCartMessage.style.display = 'none';
 
-    totalSpan.textContent = total.toFixed(2);
+        cart.forEach(product => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <span>${product.name}</span>
+                <span>Precio: $${product.price}</span>
+                <span>Cantidad: ${product.quantity}</span>
+                <button onclick="removeFromCart(${product.id})" class="remove-btn">Eliminar</button>
+            `;
+            cartList.appendChild(listItem);
+            total += product.price * product.quantity;
+        });
+
+        totalSpan.textContent = total.toFixed(2);
+    } else {
+        // Si el carrito está vacío, mostrar el mensaje
+        emptyCartMessage.style.display = 'block';
+        totalSpan.textContent = '0.00';
+    }
+
+    
 }
 
 function removeFromCart(productId) {
