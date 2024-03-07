@@ -1,22 +1,27 @@
+// Cuando se carga el DOM
 document.addEventListener('DOMContentLoaded', () => {
+    // Obtener productos desde el archivo JSON
     fetch('productos.json')
         .then(response => response.json())
         .then(products => {
+            // Mostrar los productos en la interfaz
             displayProducts(products);
-            // Almacena los productos en una variable global para acceder a ellos
+
+            // Almacenar los productos en una variable global para acceder a ellos
             window.productsData = products;
         })
         .catch(error => console.error(error));
 
-    // Cargar el carrito desde el localStorage si existe
+    // Cargar el carrito desde el localStorage 
     const savedCart = localStorage.getItem('cart');
     let cart = savedCart ? JSON.parse(savedCart) : [];
     updateCartUI(cart);
-    
+
     // Asignar el carrito a la variable global para que sea accesible desde otras funciones
     window.cart = cart;
 });
 
+// Mostrar los productos en la interfaz
 function displayProducts(products) {
     const productsContainer = document.getElementById('products');
     let currentRow;
@@ -49,8 +54,7 @@ function displayProducts(products) {
     }
 }
 
-
-
+// Agregar un producto al carrito
 function addToCart(productId) {
     const product = getProductById(productId);
 
@@ -72,19 +76,19 @@ function addToCart(productId) {
     }
 }
 
-
+// Obtener un producto por ID
 function getProductById(productId) {
-    // Implementación de la función para obtener el producto por ID desde la variable global
     return window.productsData.find(product => product.id === productId);
 }
 
+// Actualizar la interfaz del carrito
 function updateCartUI(cart) {
     const cartList = document.getElementById('cart-list');
     const totalSpan = document.getElementById('total');
     const emptyCartMessage = document.getElementById('emptyCartMessage');
-    
+
     cartList.innerHTML = '';
-    
+
     let total = 0;
 
     if (cart.length > 0) {
@@ -108,10 +112,9 @@ function updateCartUI(cart) {
         emptyCartMessage.style.display = 'block';
         totalSpan.textContent = '0.00';
     }
-
-    
 }
 
+// Eliminar un producto del carrito
 function removeFromCart(productId) {
     window.cart = window.cart.filter(product => product.id !== productId);
     updateCartUI(window.cart);
@@ -119,11 +122,13 @@ function removeFromCart(productId) {
     saveCartToLocalStorage(window.cart);
 }
 
+// Proceso de pago
 function checkout() {
     // Mostrar el formulario de datos del cliente
     document.getElementById('customerDataForm').style.display = 'block';
 }
 
+// Enviar datos del cliente
 function submitCustomerData() {
     const name = document.getElementById('name').value;
     const phone = document.getElementById('phone').value;
@@ -145,40 +150,32 @@ function submitCustomerData() {
         document.getElementById('customerForm').reset();
         document.getElementById('customerDataForm').style.display = 'none';
     } else {
-        // Mostrar un cuadro de diálogo indicando que falta información del cliente o el carrito está vacío
+        
         window.alert('Falta información del cliente o el carrito está vacío.');
     }
 }
+
+// Mostrar alerta personalizada
 function showCustomAlert(message) {
-    // Crear un div para la alerta personalizada
     const alertDiv = document.createElement('div');
     alertDiv.className = 'custom-alert';
     alertDiv.textContent = message;
-
-    // Establecer el estilo
     alertDiv.style.backgroundColor = '#d67244'; // Fondo verde
     alertDiv.style.color = '#fff'; // Texto blanco
-
-    // Agregar la alerta al cuerpo del documento
     document.body.appendChild(alertDiv);
 
-    // Agregar un evento de clic para cerrar la alerta al hacer clic en ella
-    alertDiv.addEventListener('click', function () {
-        document.body.removeChild(alertDiv);
-    });
-
-    // Opcional: cerrar la alerta automáticamente después de un tiempo (ejemplo: 15 segundos)
+    // Cerrar la alerta automáticamente después de un tiempo (ejemplo: 15 segundos)
     setTimeout(() => {
         document.body.removeChild(alertDiv);
     }, 15000); // Mostrar la alerta por 15 segundos
 }
 
+// Cerrar un modal personalizado
 function closeCustomModal() {
-    // Cerrar el modal al hacer clic en la "X"
     document.getElementById('customModal').style.display = 'none';
 }
 
-
+// Limpiar el carrito
 function clearCart() {
     window.cart = [];
     updateCartUI(window.cart);
@@ -186,7 +183,7 @@ function clearCart() {
     localStorage.removeItem('cart');
 }
 
+// Guardar el carrito en el localStorage
 function saveCartToLocalStorage(cart) {
-    // Guardar el carrito en el localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
 }

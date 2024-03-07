@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,14 +7,16 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Establece el cuerpo para ocupar al menos el 100% del alto de la ventana */
+    min-height: 100vh; 
 }
 
+/* Estilos para la imagen del logo */
 .logo-img {
     max-width: 300px;
     height: auto;
 }
 
+/* Estilos para el contenedor del carrito */
 .cart-container {
     margin-top: 20px;
     padding: 15px;
@@ -21,6 +24,7 @@ body {
     border-radius: 8px;
 }
 
+/* Estilos para el contenedor de productos */
 .product-container {
     display: flex;
     flex-wrap: wrap;
@@ -28,33 +32,31 @@ body {
     justify-content: center;
 }
 
+/* Estilos para la columna en dispositivos medianos */
 .col-md-4 {
-    margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+    margin-top: 20px; 
 }
 
-.cart-container {
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-}
-
+/* Estilos para la lista del carrito */
 .cart-list {
     list-style: none;
     padding: 0;
 }
+
+/* Estilos para los elementos de la lista del carrito */
 .cart-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
 }
+
 .cart-list li span {
     flex-grow: 1;
     margin-right: 10px;
 }
 
-
+/* Estilos para los botones de checkout y limpiar carrito */
 .checkout-btn,
 .clear-cart-btn {
     width: 100%;
@@ -62,6 +64,7 @@ body {
     cursor: pointer;
 }
 
+/* Estilos para dispositivos pequeños (hasta 768px) */
 @media (max-width: 768px) {
     .col-md-4 {
         margin-top: 0;
@@ -71,6 +74,7 @@ body {
     }
 }
 
+/* Estilos para el botón de eliminación del carrito */
 .remove-btn {
     background-color: #f44336;
     color: white;
@@ -83,12 +87,15 @@ body {
 .remove-btn:hover {
     background-color: #d32f2f;
 }
+
+/* Estilos para la posición centrada de la marca de la barra de navegación */
 .navbar-brand-centered {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
 
+/* Estilos para el modal personalizado */
 .custom-modal {
     display: none;
     position: fixed;
@@ -96,12 +103,13 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(31, 216, 31, 0.637); /* Fondo verde oscuro con opacidad */
+    background-color: rgba(31, 216, 31, 0.637); 
     justify-content: center;
     align-items: center;
     z-index: 1;
 }
 
+/* Estilos para el contenido del modal */
 .modal-content {
     background-color: #fff;
     padding: 20px;
@@ -109,6 +117,7 @@ body {
     position: relative;
 }
 
+/* Estilos para el botón de cierre del modal */
 .close {
     position: absolute;
     top: 10px;
@@ -117,6 +126,8 @@ body {
     color: #333;
     cursor: pointer;
 }
+
+/* Estilos para la alerta personalizada */
 .custom-alert {
     position: fixed;
     top: 50%;
@@ -127,23 +138,27 @@ body {
     z-index: 2;
 }
 
+/* Estilos para el formulario del cliente */
 .customer-form {
-    background-color: #fff; /* Fondo blanco */
+    background-color: #fff; 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra alrededor del formulario */
 }
 
+/* Estilos para los grupos de formulario */
 .form-group {
     margin-bottom: 15px;
 }
 
+/* Estilos para las etiquetas de formulario */
 label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
+/* Estilos para los campos de formulario */
 input {
     width: 100%;
     padding: 10px;
@@ -153,7 +168,7 @@ input {
     font-size: 14px;
 }
 
-
+/* Estilos para los botones */
 .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -167,20 +182,24 @@ input {
     transition: background-color 0.3s ease;
 }
 
+/* Estilos para el botón primario */
 .btn-primary {
     color: #fff;
-    background-color: #388a09; /* Color azul - puedes cambiarlo según tu preferencia */
+    background-color: #388a09; 
     border-color: #d67244;
 }
 
 .btn-primary:hover {
     background-color: #83b807; /* Cambia el color al pasar el ratón */
 }
+
+/* Estilos para el botón secundario */
 .btn-secondary {
     color: #fff;
-    background-color: #d67244; /* Color rojo - puedes cambiarlo según tu preferencia */
+    background-color: #d67244; 
     border-color: #388a09;
 }
+
 .btn-secondary:hover {
     background-color: #a73c2e; /* Cambia el color al pasar el ratón */
 }
