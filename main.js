@@ -109,7 +109,11 @@ function removeFromCart(productId) {
 }
 
 function checkout() {
-    // Obtener datos del cliente
+    // Mostrar el formulario de datos del cliente
+    document.getElementById('customerDataForm').style.display = 'block';
+}
+
+function submitCustomerData() {
     const name = document.getElementById('name').value;
     const phone = document.getElementById('phone').value;
     const email = document.getElementById('email').value;
@@ -118,28 +122,49 @@ function checkout() {
     const totalAmount = parseFloat(document.getElementById('total').textContent);
 
     if (totalAmount > 0 && name && phone && email && address) {
-        // Crear un div para el mensaje estilizado
-        const messageDiv = document.createElement('div');
-        messageDiv.className = 'success-message';
-        messageDiv.innerHTML = `
-            <p>¡Gracias por tu compra, ${name}! Monto total: $${totalAmount.toFixed(2)}</p>
-            <p>Los productos se enviarán a la siguiente dirección: ${address}</p>
-        `;
+        const thankYouMessage = `¡Gracias por tu compra, ${name}!\nMonto total: $${totalAmount.toFixed(2)}\nLos productos se enviarán a la siguiente dirección: ${address}`;
 
-        // Añadir el div al cuerpo del documento
-        document.body.appendChild(messageDiv);
+        // Mostrar alerta personalizada
+        showCustomAlert(thankYouMessage);
 
-        // Limpia el carrito después de la compra después de un breve retraso
-        setTimeout(() => {
-            clearCart();
-            console.log('Proceso de compra completado.');
-            // Remover el mensaje después de limpiar el carrito
-            document.body.removeChild(messageDiv);
-        }, 5000);  // Mostrar el mensaje por 5 segundos
+        // Limpiar el carrito después de la compra
+        clearCart();
+
+        // Ocultar el formulario y restablecer su contenido
+        document.getElementById('customerForm').reset();
+        document.getElementById('customerDataForm').style.display = 'none';
     } else {
-        // Mostrar mensaje de datos incompletos
-        console.error('Falta información del cliente o el carrito está vacío.');
+        // Mostrar un cuadro de diálogo indicando que falta información del cliente o el carrito está vacío
+        window.alert('Falta información del cliente o el carrito está vacío.');
     }
+}
+function showCustomAlert(message) {
+    // Crear un div para la alerta personalizada
+    const alertDiv = document.createElement('div');
+    alertDiv.className = 'custom-alert';
+    alertDiv.textContent = message;
+
+    // Establecer el estilo
+    alertDiv.style.backgroundColor = '#d67244'; // Fondo verde
+    alertDiv.style.color = '#fff'; // Texto blanco
+
+    // Agregar la alerta al cuerpo del documento
+    document.body.appendChild(alertDiv);
+
+    // Agregar un evento de clic para cerrar la alerta al hacer clic en ella
+    alertDiv.addEventListener('click', function () {
+        document.body.removeChild(alertDiv);
+    });
+
+    // Opcional: cerrar la alerta automáticamente después de un tiempo (ejemplo: 15 segundos)
+    setTimeout(() => {
+        document.body.removeChild(alertDiv);
+    }, 15000); // Mostrar la alerta por 15 segundos
+}
+
+function closeCustomModal() {
+    // Cerrar el modal al hacer clic en la "X"
+    document.getElementById('customModal').style.display = 'none';
 }
 
 

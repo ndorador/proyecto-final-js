@@ -9,8 +9,16 @@ body {
     min-height: 100vh; /* Establece el cuerpo para ocupar al menos el 100% del alto de la ventana */
 }
 
-.container {
+.logo-img {
+    max-width: 300px;
+    height: auto;
+}
+
+.cart-container {
     margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
 }
 
 .product-container {
@@ -79,4 +87,92 @@ body {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.custom-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(31, 216, 31, 0.637); /* Fondo verde oscuro con opacidad */
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+}
+.custom-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    border-radius: 8px;
+    z-index: 2;
+}
+
+.customer-form {
+    background-color: #fff; /* Fondo blanco */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra alrededor del formulario */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #388a09; /* Color azul - puedes cambiarlo según tu preferencia */
+    border-color: #d67244;
+}
+
+.btn-primary:hover {
+    background-color: #83b807; /* Cambia el color al pasar el ratón */
 }
