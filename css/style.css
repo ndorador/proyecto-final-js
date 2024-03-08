@@ -8,12 +8,11 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh; 
-}
-
-/* Estilos para la imagen del logo */
-.logo-img {
-    max-width: 300px;
-    height: auto;
+    background-color: rgb(206, 179, 30); 
+    align-items: center;
+    color: #ffffff; 
+    
+    
 }
 
 /* Estilos para el contenedor del carrito */
@@ -203,3 +202,4 @@ input {
 .btn-secondary:hover {
     background-color: #a73c2e; /* Cambia el color al pasar el ratón */
 }
+

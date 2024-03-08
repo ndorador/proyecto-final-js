@@ -15,7 +15,9 @@
 <body>
     <!-- Encabezado de la página -->
     <header class="text-center my-4">
-        <img src="assets/img/logos/logo.png" alt="Logo" class="img-fluid" style="max-width: 300px; height: auto;">
+        <div class="container">
+            <img src="assets/img/logos/logo banner 2.png" alt="Logo" class="img-fluid mx-auto">
+        </div>
     </header>
 
     <!-- Separador -->
@@ -33,7 +35,7 @@
                 <!-- Carrito de compras y formulario de datos del cliente -->
                 <div class="col-md-4">
                     <!-- Carrito de compras -->
-                    <div id="cart" class="cart-container">
+                    <div id="cart" class="cart-container" style="background-color: white; color: black;">
                         <h2>Carrito</h2>
                         <ul id="cart-list" class="cart-list"></ul>
                         <p>Total: $<span id="total" class="total">0.00</span></p>
@@ -41,6 +43,9 @@
                         <button onclick="clearCart()" class="btn btn-secondary clear-cart-btn">Vaciar Carrito</button>
                     </div>
 
+                    <!-- Separador -->
+                    <div style="height: 20px;"></div>
+                    
                     <!-- Formulario de datos del cliente -->
                     <div id="customerDataForm" style="display: none;">
                         <div class="card">
@@ -64,8 +69,10 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Separador -->
+                    <div style="height: 20px;"></div>
                     <!-- Mensaje de carrito vacío -->
-                    <div id="emptyCartMessage" style="display: none; color: red;">
+                    <div id="emptyCartMessage" style="display: none; color: rgb(255, 255, 255); font-weight: bold;">
                         El carrito está vacío. Agrega productos antes de comprar.
                     </div>
                 </div>
