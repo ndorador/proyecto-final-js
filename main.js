@@ -3,11 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Obtener productos desde el archivo JSON
     fetch('productos.json')
         .then(response => response.json())
-        .then(products => {
-            // Mostrar los productos en la interfaz
+        .then(products => {   
             displayProducts(products);
-
-            // Almacenar los productos en una variable global para acceder a ellos
             window.productsData = products;
         })
         .catch(error => console.error(error));
@@ -28,7 +25,6 @@ function displayProducts(products) {
 
     for (let i = 0; i < products.length; i++) {
         const product = products[i];
-
         // Comienza una nueva fila después de cada 4 productos
         if (i % 4 === 0) {
             currentRow = document.createElement('div');
@@ -124,11 +120,8 @@ function removeFromCart(productId) {
 
 // Proceso de pago
 function checkout() {
-    // Mostrar el formulario de datos del cliente
     document.getElementById('customerDataForm').style.display = 'block';
 }
-
-// Enviar datos del cliente
 function submitCustomerData() {
     const name = document.getElementById('name').value;
     const phone = document.getElementById('phone').value;
