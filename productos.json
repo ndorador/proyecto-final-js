@@ -1,8 +1,8 @@
 [
-    {"id": 1, "name": "Manzana", "price": 100, "image": ".assets/img/verduras/manzana.jpg" },
+    {"id": 1, "name": "Manzana", "price": 100, "image": ".assets/img/verduras/manzana.jpg"},
     {"id": 2, "name": "Plátano", "price": 120, "image": "./assets/img/verduras/platano.jpg"},
-    {"id": 3, "name": "Zanahoria", "price": 50, "image": "./assets/img/verduras/manzana.jpg"},
-    {"id": 4, "name": "Naranjas", "price": 10, "image": "./assets/img/verduras/manzana.jpg"},
+    {"id": 3, "name": "Zanahoria", "price": 50, "image": "./assets/img/verduras/zanahoria.jpg"},
+    {"id": 4, "name": "Naranjas", "price": 10, "image": "./assets/img/verduras/naranja.jpg"},
     {"id": 5, "name": "Tomates", "price": 150, "image": "./assets/img/verduras/tomate.jpg" },
     {"id": 6, "name": "Lechuga", "price": 60, "image": "./assets/img/verduras/manzana.jpg"},
     {"id": 7, "name": "Palta", "price": 250, "image": "./assets/img/verduras/manzana.jpg"},
