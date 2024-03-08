@@ -1,6 +1,6 @@
 [
     {"id": 1, "name": "Manzana", "price": 100, "image": ".assets/img/verduras/manzana.jpg" },
-    {"id": 2, "name": "Plátano", "price": 120, "image": "./assets/img/verduras/manzana.jpg"},
+    {"id": 2, "name": "Plátano", "price": 120, "image": "./assets/img/verduras/platano.jpg"},
     {"id": 3, "name": "Zanahoria", "price": 50, "image": "./assets/img/verduras/manzana.jpg"},
     {"id": 4, "name": "Naranjas", "price": 10, "image": "./assets/img/verduras/manzana.jpg"},
     {"id": 5, "name": "Tomates", "price": 150, "image": "./assets/img/verduras/tomate.jpg" },
