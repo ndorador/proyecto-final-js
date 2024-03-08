@@ -139,14 +139,8 @@ function submitCustomerData() {
 
     if (totalAmount > 0 && name && phone && email && address) {
         const thankYouMessage = `¡Gracias por tu compra, ${name}!\nMonto total: $${totalAmount.toFixed(2)}\nLos productos se enviarán a la siguiente dirección: ${address}`;
-
-        // Mostrar alerta personalizada
         showCustomAlert(thankYouMessage);
-
-        // Limpiar el carrito después de la compra
         clearCart();
-
-        // Ocultar el formulario y restablecer su contenido
         document.getElementById('customerForm').reset();
         document.getElementById('customerDataForm').style.display = 'none';
     } else {
@@ -160,14 +154,14 @@ function showCustomAlert(message) {
     const alertDiv = document.createElement('div');
     alertDiv.className = 'custom-alert';
     alertDiv.textContent = message;
-    alertDiv.style.backgroundColor = '#d67244'; // Fondo verde
-    alertDiv.style.color = '#fff'; // Texto blanco
+    alertDiv.style.backgroundColor = '#d67244'; 
+    alertDiv.style.color = '#fff'; 
     document.body.appendChild(alertDiv);
 
-    // Cerrar la alerta automáticamente después de un tiempo (ejemplo: 15 segundos)
+    // Cerrar la alerta automáticamente después de un tiempo (ejemplo: 10 segundos)
     setTimeout(() => {
         document.body.removeChild(alertDiv);
-    }, 15000); // Mostrar la alerta por 15 segundos
+    }, 10000); 
 }
 
 // Cerrar un modal personalizado

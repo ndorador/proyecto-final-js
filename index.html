@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <!-- Configuración de la página -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verdulería</title>
 
     <!-- Estilos -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/style.css"> <!-- Ruta relativa al archivo CSS -->
+    <link rel="stylesheet" href="./css/style.css"> <!-- Ruta al archivo CSS -->
 </head>
 <body>
     <!-- Encabezado de la página -->
@@ -18,6 +16,11 @@
             <img src="assets/img/logos/logo banner 2.png" alt="Logo" class="img-fluid mx-auto">
         </div>
     </header>
+    <div class="content-container">
+        <div class="card">
+           <h2 id="changingText" class="image-text">Sacamos las verduras! directamente! del huerto! al momento! Joya!</h2>
+        </div>
+    </div>
     <!-- Separador -->
     <div style="height: 20px;"></div>
     <!-- Contenido principal -->
@@ -30,7 +33,6 @@
                 </div>
                 <!-- Carrito de compras y formulario de datos del cliente -->
                 <div class="col-md-4">
-                    <!-- Carrito de compras -->
                     <div id="cart" class="cart-container" style="background-color: white; color: black;">
                         <h2>Carrito</h2>
                         <ul id="cart-list" class="cart-list"></ul>
@@ -38,7 +40,6 @@
                         <button onclick="checkout()" class="btn btn-primary checkout-btn">Comprar</button>
                         <button onclick="clearCart()" class="btn btn-secondary clear-cart-btn">Vaciar Carrito</button>
                     </div>
-                    <!-- Separador -->
                     <div style="height: 20px;"></div>       
                     <!-- Formulario de datos del cliente -->
                     <div id="customerDataForm" style="display: none;">
@@ -54,27 +55,40 @@
                                     <input type="email" id="email" required>
                                     <label for="address">Dirección:</label>
                                     <input type="text" id="address" required>
-
                                     <button type="button" onclick="submitCustomerData()" class="btn btn-primary">Proceder con el Envío</button>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <!-- Separador -->
                     <div style="height: 20px;"></div>
                     <!-- Mensaje de carrito vacío -->
                     <div id="emptyCartMessage" style="display: none;">
-                        <div class="card" style="background-color: white; color: red;">
-                            <div class="card-body" style="font-weight: bold;">
-                                El carrito está vacío. Agrega productos antes de comprar.
-                            </div>
-                        </div>
-                    </div>
+                    <div class="card" style="background-color: white; color: red;">
+                       <div class="card-body" style="font-weight: bold;">
+                          El carrito está vacío. Agrega productos antes de comprar.
+                       </div>
+                   </div>
+                </div>
                 </div>
             </div>
         </div>
     </main>
     <!-- Scripts -->
+    <script>
+        // Cambiar el color del texto entre negro, amarillo y verde cada 2 segundos
+        setInterval(() => {
+            const changingText = document.getElementById('changingText');
+            const currentColor = window.getComputedStyle(changingText).color;
+    
+            if (currentColor === 'rgb(0, 0, 0)') {
+                changingText.style.color = 'red';
+            } else if (currentColor === 'rgb(255, 0, 0)') {
+                changingText.style.color = 'green';
+            } else {
+                changingText.style.color = 'black';
+            }
+        }, 1000);
+    </script>
     <script src="main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN91i+su7dKqUJ0sS0R0lMz0JP5EJ7N5E" crossorigin="anonymous"></script>

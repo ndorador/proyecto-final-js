@@ -10,9 +10,15 @@ body {
     min-height: 100vh; 
     background-color: rgb(206, 179, 30); 
     align-items: center;
-    color: #ffffff; 
+    color: #ffffff;    
 }
-
+.card {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Evitar que el texto desborde la tarjeta */
+}
 /* Estilos para el contenedor del carrito */
 .cart-container {
     margin-top: 20px;
@@ -20,7 +26,6 @@ body {
     border: 1px solid #ddd;
     border-radius: 8px;
 }
-
 /* Estilos para el contenedor de productos */
 .product-container {
     display: flex;
@@ -28,18 +33,15 @@ body {
     gap: 20px;
     justify-content: center;
 }
-
 /* Estilos para la columna en dispositivos medianos */
 .col-md-4 {
     margin-top: 20px; 
 }
-
 /* Estilos para la lista del carrito */
 .cart-list {
     list-style: none;
     padding: 0;
 }
-
 /* Estilos para los elementos de la lista del carrito */
 .cart-list li {
     display: flex;
@@ -47,12 +49,10 @@ body {
     align-items: center;
     margin-bottom: 10px;
 }
-
 .cart-list li span {
     flex-grow: 1;
     margin-right: 10px;
 }
-
 /* Estilos para los botones de checkout y limpiar carrito */
 .checkout-btn,
 .clear-cart-btn {
@@ -67,7 +67,7 @@ body {
         margin-top: 0;
     }
     .cart-container {
-        margin-top: 20px; /* Ajusta el margen superior según sea necesario en dispositivos pequeños */
+        margin-top: 20px;
     }
 }
 
@@ -84,14 +84,6 @@ body {
 .remove-btn:hover {
     background-color: #d32f2f;
 }
-
-/* Estilos para la posición centrada de la marca de la barra de navegación */
-.navbar-brand-centered {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 /* Estilos para el modal personalizado */
 .custom-modal {
     display: none;
@@ -105,7 +97,6 @@ body {
     align-items: center;
     z-index: 1;
 }
-
 /* Estilos para el contenido del modal */
 .modal-content {
     background-color: #fff;
@@ -113,7 +104,6 @@ body {
     border-radius: 8px;
     position: relative;
 }
-
 /* Estilos para el botón de cierre del modal */
 .close {
     position: absolute;
@@ -123,7 +113,6 @@ body {
     color: #333;
     cursor: pointer;
 }
-
 /* Estilos para la alerta personalizada */
 .custom-alert {
     position: fixed;
@@ -134,7 +123,6 @@ body {
     border-radius: 8px;
     z-index: 2;
 }
-
 /* Estilos para el formulario del cliente */
 .customer-form {
     background-color: #fff; 
@@ -142,19 +130,16 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra alrededor del formulario */
 }
-
 /* Estilos para los grupos de formulario */
 .form-group {
     margin-bottom: 15px;
 }
-
 /* Estilos para las etiquetas de formulario */
 label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
 }
-
 /* Estilos para los campos de formulario */
 input {
     width: 100%;
@@ -164,7 +149,6 @@ input {
     box-sizing: border-box;
     font-size: 14px;
 }
-
 /* Estilos para los botones */
 .btn {
     display: inline-block;
@@ -178,26 +162,26 @@ input {
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
-
 /* Estilos para el botón primario */
 .btn-primary {
     color: #fff;
     background-color: #388a09; 
     border-color: #d67244;
 }
-
 .btn-primary:hover {
     background-color: #83b807; /* Cambia el color al pasar el ratón */
 }
-
 /* Estilos para el botón secundario */
 .btn-secondary {
     color: #fff;
     background-color: #d67244; 
     border-color: #388a09;
 }
-
 .btn-secondary:hover {
     background-color: #a73c2e; /* Cambia el color al pasar el ratón */
+}
+.image-text {
+    text-transform: uppercase;
+    font-weight: bold;  
 }
 
